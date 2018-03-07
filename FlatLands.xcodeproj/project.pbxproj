@@ -17,6 +17,7 @@
 		486EB85E204F5DE0004676C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 486EB85C204F5DE0004676C2 /* LaunchScreen.storyboard */; };
 		486EB869204F5DE0004676C2 /* FlatLandsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486EB868204F5DE0004676C2 /* FlatLandsTests.swift */; };
 		486EB874204F5DE0004676C2 /* FlatLandsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486EB873204F5DE0004676C2 /* FlatLandsUITests.swift */; };
+		486EB882204F60D8004676C2 /* GestureHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486EB881204F60D8004676C2 /* GestureHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		486EB86F204F5DE0004676C2 /* FlatLandsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlatLandsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		486EB873204F5DE0004676C2 /* FlatLandsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatLandsUITests.swift; sourceTree = "<group>"; };
 		486EB875204F5DE0004676C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		486EB881204F60D8004676C2 /* GestureHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				486EB851204F5DE0004676C2 /* Actions.sks */,
 				486EB853204F5DE0004676C2 /* GameScene.swift */,
 				486EB855204F5DE0004676C2 /* GameViewController.swift */,
+				486EB881204F60D8004676C2 /* GestureHelper.swift */,
 				486EB857204F5DE0004676C2 /* Main.storyboard */,
 				486EB85A204F5DE0004676C2 /* Assets.xcassets */,
 				486EB85C204F5DE0004676C2 /* LaunchScreen.storyboard */,
@@ -271,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				486EB854204F5DE0004676C2 /* GameScene.swift in Sources */,
+				486EB882204F60D8004676C2 /* GestureHelper.swift in Sources */,
 				486EB856204F5DE0004676C2 /* GameViewController.swift in Sources */,
 				486EB84E204F5DE0004676C2 /* AppDelegate.swift in Sources */,
 			);
