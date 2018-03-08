@@ -49,7 +49,71 @@ class GameScene: SKScene {
     }
     
     func calculateSwipe(side: String, firstTouch: CGPoint, lastTouch: CGPoint) {
-        print("Calculating swipe on the \(side) side with location1: \(firstTouch) and location2: \(lastTouch)")
+        print("-----")
+//        print("Calculating swipe on the \(side) side with location1: \(firstTouch) and location2: \(lastTouch)")
+        let yChange = lastTouch.y - firstTouch.y
+        let xChange = lastTouch.x - firstTouch.x
+        if abs(xChange) > abs(yChange) {
+            if xChange <= -20 {
+                if side == "left" {
+                    leftSideSwipeLeft()
+                } else {
+                    rightSideSwipeLeft()
+                }
+            } else if xChange >= 20 {
+                if side == "left" {
+                    leftSideSwipeRight()
+                } else {
+                    rightSideSwipeRight()
+                }
+            }
+        } else {
+            if yChange >= 20 {
+                if side == "left" {
+                    leftSideSwipeDown()
+                } else {
+                    rightSideSwipeDown()
+                }
+            } else if yChange <= -20 {
+                if side == "left" {
+                    leftSideSwipeUp()
+                } else {
+                    rightSideSwipeUp()
+                }
+            }
+        }
+    }
+    
+    func leftSideSwipeLeft() {
+        print("leftSideSwipeLeft")
+    }
+    
+    func leftSideSwipeRight() {
+        print("leftSideSwipeRight")
+    }
+    
+    func leftSideSwipeUp() {
+        print("leftSideSwipeUp")
+    }
+    
+    func leftSideSwipeDown() {
+        print("leftSideSwipeDown")
+    }
+    
+    func rightSideSwipeLeft() {
+        print("rightSideSwipeLeft")
+    }
+    
+    func rightSideSwipeRight() {
+        print("rightSideSwipeRight")
+    }
+    
+    func rightSideSwipeUp() {
+        print("rightSideSwipeUp")
+    }
+    
+    func rightSideSwipeDown() {
+        print("rightSideSwipeDown")
     }
     
 }
