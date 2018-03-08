@@ -11,62 +11,45 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    var leftScreen: SKScene!
-    var rightScreen: SKScene!
+    var leftTouchLocation: CGPoint? = nil
+    var rightTouchLocation: CGPoint? = nil
     
     override func didMove(to view: SKView) {
-        
-        leftScreen = SKScene
-        
-//        Initialize swipe gesture recognizers
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.right
-        self.view?.addGestureRecognizer(swipeRight)
-        
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
-        self.view?.addGestureRecognizer(swipeLeft)
-        
-        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.up
-        self.view?.addGestureRecognizer(swipeUp)
-        
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeDown.direction = UISwipeGestureRecognizerDirection.down
-        self.view?.addGestureRecognizer(swipeDown)
     }
     
-    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            switch swipeGesture.direction {
-            case UISwipeGestureRecognizerDirection.right:
-                side1Right()
-            case UISwipeGestureRecognizerDirection.left:
-                side1Left()
-            case UISwipeGestureRecognizerDirection.down:
-                side1Down()
-            case UISwipeGestureRecognizerDirection.up:
-                side1Up()
-            default:
-                break
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self.view)
+            if location.x > (self.view?.frame.midX)! {
+                rightTouchLocation = location
+            } else {
+                leftTouchLocation = location
             }
         }
     }
     
-    func side1Up() {
-        print("side1Up")
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        for touch in touches {
+//            if
+//        }
+//    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self.view)
+            if leftTouchLocation != nil && location.x < (self.view?.frame.midX)! {
+                calculateSwipe(side: "left", firstTouch: leftTouchLocation!, lastTouch: location)
+                leftTouchLocation = nil
+            }
+            else if rightTouchLocation != nil && location.x > (self.view?.frame.midX)! {
+                calculateSwipe(side: "right", firstTouch: rightTouchLocation!, lastTouch: location)
+                rightTouchLocation = nil
+            }
+        }
     }
     
-    func side1Down() {
-        print("side1Down")
-    }
-    
-    func side1Left() {
-        print("side1Left")
-    }
-    
-    func side1Right() {
-        print("side1Right")
+    func calculateSwipe(side: String, firstTouch: CGPoint, lastTouch: CGPoint) {
+        print("Calculating swipe on the \(side) side with location1: \(firstTouch) and location2: \(lastTouch)")
     }
     
 }
