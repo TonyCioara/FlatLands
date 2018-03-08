@@ -86,34 +86,42 @@ class GameScene: SKScene {
     
     func leftSideSwipeLeft() {
         print("leftSideSwipeLeft")
+//        ???
     }
     
     func leftSideSwipeRight() {
         print("leftSideSwipeRight")
+//        If also rightSideSwipeLeft switch positions
     }
     
     func leftSideSwipeUp() {
         print("leftSideSwipeUp")
+//        Blue character jumps up
     }
     
     func leftSideSwipeDown() {
         print("leftSideSwipeDown")
+//        Blue character ducks
     }
     
     func rightSideSwipeLeft() {
         print("rightSideSwipeLeft")
+//        If also leftSideSwipeRight switch positions
     }
     
     func rightSideSwipeRight() {
         print("rightSideSwipeRight")
+//        ???
     }
     
     func rightSideSwipeUp() {
         print("rightSideSwipeUp")
+//        Red character jumps up
     }
     
     func rightSideSwipeDown() {
         print("rightSideSwipeDown")
+//        Red character jumps up
     }
     
 }
