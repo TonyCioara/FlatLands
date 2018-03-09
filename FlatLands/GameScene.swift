@@ -13,9 +13,7 @@ class GameScene: SKScene {
     
     var leftTouchLocation: CGPoint? = nil
     var rightTouchLocation: CGPoint? = nil
-    
-    override func didMove(to view: SKView) {
-    }
+    var scrollNode: SKNode!
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
@@ -27,12 +25,6 @@ class GameScene: SKScene {
             }
         }
     }
-    
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        for touch in touches {
-//            if
-//        }
-//    }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
@@ -82,6 +74,37 @@ class GameScene: SKScene {
                 }
             }
         }
+    }
+    
+    override func didMove(to view: SKView) {
+        scrollNode = childNode(withName: "scrollNode") as! SKNode
+        let mapArray = [[2, 0, 3, 0 , 0, 2], [2, 0, 1, 0 , 0, 2], [1, 0, 2, 0 , 0, 1], [1, 0, 2, 0 , 1, 0], [0, 0, 0, 0 , 0, 0], [0, 0, 0, 0 , 0, 1]]
+        createMapFromArray(array: mapArray)
+    }
+    
+    func createMapFromArray(array: [[Int]]) {
+        for rowIndex in 0 ... array.count - 1 {
+            for colIndex in 0 ... array[rowIndex].count - 1 {
+                let typeValue = array[rowIndex][colIndex]
+                if typeValue != 0 {
+                    let type = ObstacleType(rawValue: typeValue - 1)
+                    let xCoord = rowIndex * 40
+                    let yCoord = colIndex * 40
+                    addObstacleToScene(type: type!, xCoord: CGFloat(xCoord), yCoord: CGFloat(yCoord))
+                }
+            }
+        }
+    }
+    
+    func addObstacleToScene(type: ObstacleType, xCoord: CGFloat, yCoord: CGFloat) {
+        let newObstacle = type.getClass()
+        self.scrollNode.addChild(newObstacle)
+        newObstacle.position.x = xCoord
+        newObstacle.position.y = yCoord
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        scrollNode.position.x -= 2
     }
     
     func leftSideSwipeLeft() {
