@@ -18,6 +18,8 @@
 		486EB869204F5DE0004676C2 /* FlatLandsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486EB868204F5DE0004676C2 /* FlatLandsTests.swift */; };
 		486EB874204F5DE0004676C2 /* FlatLandsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486EB873204F5DE0004676C2 /* FlatLandsUITests.swift */; };
 		486EB8862052026A004676C2 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486EB8852052026A004676C2 /* Obstacle.swift */; };
+		486EB888205346D4004676C2 /* BuildScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486EB887205346D4004676C2 /* BuildScene.swift */; };
+		486EB88A205346F6004676C2 /* BuildScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 486EB889205346F6004676C2 /* BuildScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		486EB873204F5DE0004676C2 /* FlatLandsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatLandsUITests.swift; sourceTree = "<group>"; };
 		486EB875204F5DE0004676C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		486EB8852052026A004676C2 /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
+		486EB887205346D4004676C2 /* BuildScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildScene.swift; sourceTree = "<group>"; };
+		486EB889205346F6004676C2 /* BuildScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BuildScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 				486EB84F204F5DE0004676C2 /* GameScene.sks */,
 				486EB851204F5DE0004676C2 /* Actions.sks */,
 				486EB853204F5DE0004676C2 /* GameScene.swift */,
+				486EB887205346D4004676C2 /* BuildScene.swift */,
+				486EB889205346F6004676C2 /* BuildScene.sks */,
 				486EB855204F5DE0004676C2 /* GameViewController.swift */,
 				486EB8852052026A004676C2 /* Obstacle.swift */,
 				486EB857204F5DE0004676C2 /* Main.storyboard */,
@@ -249,6 +255,7 @@
 				486EB85B204F5DE0004676C2 /* Assets.xcassets in Resources */,
 				486EB85E204F5DE0004676C2 /* LaunchScreen.storyboard in Resources */,
 				486EB852204F5DE0004676C2 /* Actions.sks in Resources */,
+				486EB88A205346F6004676C2 /* BuildScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +284,7 @@
 				486EB856204F5DE0004676C2 /* GameViewController.swift in Sources */,
 				486EB8862052026A004676C2 /* Obstacle.swift in Sources */,
 				486EB84E204F5DE0004676C2 /* AppDelegate.swift in Sources */,
+				486EB888205346D4004676C2 /* BuildScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
