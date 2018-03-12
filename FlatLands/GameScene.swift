@@ -77,7 +77,7 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
-        scrollNode = childNode(withName: "scrollNode") as! SKNode
+        self.scrollNode = childNode(withName: "scrollNode") as! SKNode
         let mapArray = [[2, 0, 3, 0 , 0, 2], [2, 0, 1, 0 , 0, 2], [1, 0, 2, 0 , 0, 1], [1, 0, 2, 0 , 1, 0], [0, 0, 0, 0 , 0, 0], [0, 0, 0, 0 , 0, 1]]
         createMapFromArray(array: mapArray)
     }
@@ -98,6 +98,7 @@ class GameScene: SKScene {
     
     func addObstacleToScene(type: ObstacleType, xCoord: CGFloat, yCoord: CGFloat) {
         let newObstacle = type.getClass()
+        newObstacle.size = CGSize(width: 80, height: 80)
         self.scrollNode.addChild(newObstacle)
         newObstacle.position.x = xCoord
         newObstacle.position.y = yCoord

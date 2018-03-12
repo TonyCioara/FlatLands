@@ -11,6 +11,8 @@ import SpriteKit
 enum ObstacleType : Int {
     case grayBox, redBox, blueBox
     
+    static let allValues = [grayBox, redBox, blueBox]
+    
     func getClass() -> SKSpriteNode {
         var box: SKSpriteNode!
         switch self {
@@ -23,13 +25,24 @@ enum ObstacleType : Int {
         }
         return box
     }
+    
+    func getName() -> String {
+        switch self {
+        case .grayBox:
+            return "grayBox"
+        case .redBox:
+            return "redBox"
+        case .blueBox:
+            return "blueBox"
+        }
+    }
 }
 
 class GrayBox: SKSpriteNode {
 //    Both characters are immune to it
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
-        let size = CGSize(width: 80, height: 80)
+//        let size = CGSize(width: 80, height: 80)
         let texture = SKTexture(imageNamed: "grayBox")
         super.init(texture: texture, color: UIColor.init(white: 0, alpha: 0), size: size)
     }
@@ -43,7 +56,7 @@ class RedBox: SKSpriteNode {
 //    Red character is immune to it
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
-        let size = CGSize(width: 80, height: 80)
+//        let size = CGSize(width: 80, height: 80)
         let texture = SKTexture(imageNamed: "redBox")
         super.init(texture: texture, color: UIColor.init(white: 0, alpha: 0), size: size)
     }
@@ -57,7 +70,7 @@ class BlueBox: SKSpriteNode {
 //    Blue character is immune to it
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
-        let size = CGSize(width: 80, height: 80)
+//        let size = CGSize(width: 80, height: 80)
         let texture = SKTexture(imageNamed: "blueBox")
         super.init(texture: texture, color: UIColor.init(white: 0, alpha: 0), size: size)
     }

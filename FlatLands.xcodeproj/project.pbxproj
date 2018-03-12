@@ -111,8 +111,8 @@
 			children = (
 				486EB84D204F5DE0004676C2 /* AppDelegate.swift */,
 				486EB84F204F5DE0004676C2 /* GameScene.sks */,
-				486EB851204F5DE0004676C2 /* Actions.sks */,
 				486EB853204F5DE0004676C2 /* GameScene.swift */,
+				486EB851204F5DE0004676C2 /* Actions.sks */,
 				486EB887205346D4004676C2 /* BuildScene.swift */,
 				486EB889205346F6004676C2 /* BuildScene.sks */,
 				486EB855204F5DE0004676C2 /* GameViewController.swift */,
