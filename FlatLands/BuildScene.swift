@@ -28,9 +28,9 @@ class BuildScene: SKScene {
     override func didMove(to view: SKView) {
         
         self.barNode = childNode(withName: "barNode") as! SKSpriteNode
-        self.scrollNode = childNode(withName: "scrollNode") as! SKNode
+        self.scrollNode = childNode(withName: "scrollNode")
         
-        createGrid()
+//        createGrid()
         
         for obstacleIndex in 0 ... ObstacleType.allValues.count - 1 {
             let obstacle = ObstacleType.allValues[obstacleIndex]
@@ -87,21 +87,17 @@ class BuildScene: SKScene {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if touchingNode == nil {
-            if scrolling == false {
-                return
-            }
-            
+        if scrolling == true {
             let touch:UITouch = touches.first!
             let positionInScene = touch.location(in: self)
             scroll(fingerPostion: positionInScene)
-            return
         }
-        
-        let touch:UITouch = touches.first!
-        let positionInScene = touch.location(in: self)
-        touchingNode?.position.y = positionInScene.y
-        touchingNode?.position.x = positionInScene.x - scrollNode.position.x
+        if touchingNode != nil {
+            let touch:UITouch = touches.first!
+            let positionInScene = touch.location(in: self)
+            touchingNode?.position.y = positionInScene.y
+            touchingNode?.position.x = positionInScene.x - scrollNode.position.x
+        }
     }
     
     func scroll(fingerPostion: CGPoint) {
@@ -129,8 +125,30 @@ class BuildScene: SKScene {
             touchingNode?.removeFromParent()
             print("remove from parent")
         }
+        snapNode(node: touchingNode!)
         touchingNode = nil
+    }
+    
+    func snapNode(node: SKSpriteNode) {
         
+        let positionDeltaX = node.position.x.truncatingRemainder(dividingBy: 20)
+        let positionDeltaY = node.position.y.truncatingRemainder(dividingBy: 20)
+        
+        if positionDeltaX > 10 {
+            node.position.x += positionDeltaX
+        } else {
+            node.position.x -= positionDeltaX
+        }
+        
+        if positionDeltaY > 10 {
+            node.position.y += positionDeltaY
+        } else {
+            node.position.y -= positionDeltaY
+        }
+        
+        print("---")
+        print("YPOS: \(node.position.y)")
+        print("XPOS: \(node.position.x)")
     }
     
     func createMoveableNode(obstacle: ObstacleType, position: CGPoint) {
