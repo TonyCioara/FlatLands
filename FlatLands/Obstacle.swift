@@ -45,11 +45,20 @@ class GrayBox: SKSpriteNode {
 //        let size = CGSize(width: 80, height: 80)
         let texture = SKTexture(imageNamed: "grayBox")
         super.init(texture: texture, color: UIColor.init(white: 0, alpha: 0), size: size)
+        
+        self.physicsBody = SKPhysicsBody(rectangleOf: size)
+        self.physicsBody?.mass = 1
+        self.physicsBody?.linearDamping = 0.5
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.affectedByGravity = false
+        
+        self.physicsBody!.categoryBitMask    = PhysicsCategory.GrayBox // 00100
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+
 }
 
 class RedBox: SKSpriteNode {
@@ -59,6 +68,14 @@ class RedBox: SKSpriteNode {
 //        let size = CGSize(width: 80, height: 80)
         let texture = SKTexture(imageNamed: "redBox")
         super.init(texture: texture, color: UIColor.init(white: 0, alpha: 0), size: size)
+        
+        self.physicsBody = SKPhysicsBody(rectangleOf: size)
+        self.physicsBody?.mass = 1
+        self.physicsBody?.linearDamping = 0.5
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.affectedByGravity = false
+        
+        self.physicsBody!.categoryBitMask    = PhysicsCategory.BlueBox // 01000
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -73,6 +90,14 @@ class BlueBox: SKSpriteNode {
 //        let size = CGSize(width: 80, height: 80)
         let texture = SKTexture(imageNamed: "blueBox")
         super.init(texture: texture, color: UIColor.init(white: 0, alpha: 0), size: size)
+        
+        self.physicsBody = SKPhysicsBody(rectangleOf: size)
+        self.physicsBody?.mass = 1
+        self.physicsBody?.linearDamping = 0.5
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.affectedByGravity = false
+        
+        self.physicsBody!.categoryBitMask    = PhysicsCategory.RedBox // 10000
     }
     
     required init?(coder aDecoder: NSCoder) {

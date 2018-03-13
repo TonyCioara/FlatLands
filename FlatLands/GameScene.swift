@@ -9,11 +9,14 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var leftTouchLocation: CGPoint? = nil
     var rightTouchLocation: CGPoint? = nil
     var scrollNode: SKNode!
+    
+    var blueCharacter = BlueCharacter()
+    var redCharacter = RedCharacter()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
@@ -77,9 +80,21 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
-        self.scrollNode = childNode(withName: "scrollNode") as! SKNode
-        let mapArray = [[2, 0, 3, 0 , 0, 2], [2, 0, 1, 0 , 0, 2], [1, 0, 2, 0 , 0, 1], [1, 0, 2, 0 , 1, 0], [0, 0, 0, 0 , 0, 0], [0, 0, 0, 0 , 0, 1]]
-        createMapFromArray(array: mapArray)
+        self.scrollNode = childNode(withName: "scrollNode")
+//        let mapArray = [[2, 0, 3, 0 , 0, 2], [2, 0, 1, 0 , 0, 2], [1, 0, 2, 0 , 0, 1], [1, 0, 2, 0 , 1, 0], [0, 0, 0, 0 , 0, 0], [0, 0, 0, 0 , 0, 1]]
+//        createMapFromArray(array: mapArray)
+        addCharacters()
+    }
+    
+    func addCharacters() {
+        
+        self.addChild(blueCharacter)
+        self.addChild(redCharacter)
+        blueCharacter.position.x = 200
+        blueCharacter.position.y = 100
+        redCharacter.position.x = 200
+        redCharacter.position.y = 164
+        
     }
     
     func createMapFromArray(array: [[Int]]) {
@@ -106,6 +121,7 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         scrollNode.position.x -= 2
+        
     }
     
     func leftSideSwipeLeft() {
