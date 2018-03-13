@@ -23,14 +23,14 @@ class BuildScene: SKScene {
         }
     }
     
+    var nodeCount = 0
+    
     var mapDict = [String: Int]()
     
     override func didMove(to view: SKView) {
         
         self.barNode = childNode(withName: "barNode") as! SKSpriteNode
         self.scrollNode = childNode(withName: "scrollNode")
-        
-//        createGrid()
         
         for obstacleIndex in 0 ... ObstacleType.allValues.count - 1 {
             let obstacle = ObstacleType.allValues[obstacleIndex]
@@ -129,9 +129,13 @@ class BuildScene: SKScene {
 //        Create hashable string from positions
         let key: String = createKeyWithPositions(xPosition: xPosition, yPosition: yPosition)
         
-        self.mapDict[key] = nodeNumber
+        if mapDict[key] != nil {
+            mapDict.updateValue(nodeNumber, forKey: key)
+        } else {
+            self.mapDict[key] = nodeNumber
+            self.nodeCount += 1
+        }
         
-        print(self.mapDict)
     }
     
     func createKeyWithPositions(xPosition: Int, yPosition: Int) -> String {
