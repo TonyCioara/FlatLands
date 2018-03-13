@@ -119,32 +119,46 @@ class BuildScene: SKScene {
         scrolling = false
         if touchingNode == nil { return }
         
+        snapNode(node: touchingNode!)
+        
         touchingNode?.zPosition -= 10
         //        TODO: Snap node to grid. Delete if in trash after adding trash
         if (touchingNode?.position.x)! <= CGFloat(122) - scrollNode.position.x {
             touchingNode?.removeFromParent()
             print("remove from parent")
         }
-        snapNode(node: touchingNode!)
+        
         touchingNode = nil
     }
     
     func snapNode(node: SKSpriteNode) {
         
-        let positionDeltaX = node.position.x.truncatingRemainder(dividingBy: 20)
-        let positionDeltaY = node.position.y.truncatingRemainder(dividingBy: 20)
+        let snapSize: CGFloat = 40
         
-        if positionDeltaX > 10 {
-            node.position.x += positionDeltaX
+        let positionDeltaX = node.position.x.truncatingRemainder(dividingBy: snapSize)
+        let positionDeltaY = node.position.y.truncatingRemainder(dividingBy: snapSize)
+        
+        print("---")
+        print(positionDeltaY)
+        print(positionDeltaX)
+        
+        var newPosX = Int(node.position.x)
+        var newPosY = Int(node.position.y)
+        
+        if positionDeltaX > snapSize / 2 {
+            newPosX += Int(snapSize - positionDeltaX + 0.1)
         } else {
-            node.position.x -= positionDeltaX
+            newPosX -= Int(positionDeltaX + 0.1)
         }
         
-        if positionDeltaY > 10 {
-            node.position.y += positionDeltaY
+        if positionDeltaY > snapSize / 2 {
+            newPosY += Int(snapSize - positionDeltaY + 0.1)
         } else {
-            node.position.y -= positionDeltaY
+            newPosY -= Int(positionDeltaY + 0.1)
         }
+        
+        node.position.y = CGFloat(newPosY)
+        node.position.x = CGFloat(newPosX)
         
         print("---")
         print("YPOS: \(node.position.y)")
