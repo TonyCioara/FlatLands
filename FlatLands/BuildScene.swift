@@ -23,7 +23,7 @@ class BuildScene: SKScene {
         }
     }
     
-    var mapArray = [[Int]]()
+    var mapDict = [String: Int]()
     
     override func didMove(to view: SKView) {
         
@@ -70,21 +70,6 @@ class BuildScene: SKScene {
         }
     }
     
-//    func createGrid() {
-//        
-////        create vertical grid lines
-//        var current_height = 0
-//        while current_height < Int((self.view?.frame.height)!) {
-//            print("height: \(current_height) 2: \(self.view?.frame.height)")
-//            let hLine = SKSpriteNode(imageNamed: "hGridLine")
-//            hLine.position.x = (self.view?.frame.width)!
-//            hLine.position.y = CGFloat(40 + current_height)
-//            hLine.zPosition = 0
-//            self.addChild(hLine)
-//            current_height += 40
-//        }
-//    }
-    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         if scrolling == true {
@@ -120,15 +105,40 @@ class BuildScene: SKScene {
         if touchingNode == nil { return }
         
         snapNode(node: touchingNode!)
+        addNodeToDict(node: touchingNode!)
         
         touchingNode?.zPosition -= 10
         //        TODO: Snap node to grid. Delete if in trash after adding trash
         if (touchingNode?.position.x)! <= CGFloat(122) - scrollNode.position.x {
             touchingNode?.removeFromParent()
-            print("remove from parent")
         }
         
         touchingNode = nil
+    }
+    
+    func addNodeToDict(node: SKSpriteNode) {
+        
+//        Positions of the node
+        let xPosition = Int(node.position.x)
+        let yPosition = Int(node.position.y)
+        
+//        The type value of the node
+        let nodeSuffix = String(describing: node.name!.suffix(6))
+        let nodeNumber = Int(String(describing: nodeSuffix.prefix(2)))!
+        
+//        Create hashable string from positions
+        let key: String = createKeyWithPositions(xPosition: xPosition, yPosition: yPosition)
+        
+        self.mapDict[key] = nodeNumber
+        
+        print(self.mapDict)
+    }
+    
+    func createKeyWithPositions(xPosition: Int, yPosition: Int) -> String {
+        
+        let newString = String(xPosition) + ":" + String(yPosition)
+        
+        return(newString)
     }
     
     func snapNode(node: SKSpriteNode) {
@@ -137,10 +147,6 @@ class BuildScene: SKScene {
         
         let positionDeltaX = node.position.x.truncatingRemainder(dividingBy: snapSize)
         let positionDeltaY = node.position.y.truncatingRemainder(dividingBy: snapSize)
-        
-        print("---")
-        print(positionDeltaY)
-        print(positionDeltaX)
         
         var newPosX = Int(node.position.x)
         var newPosY = Int(node.position.y)
@@ -159,10 +165,6 @@ class BuildScene: SKScene {
         
         node.position.y = CGFloat(newPosY)
         node.position.x = CGFloat(newPosX)
-        
-        print("---")
-        print("YPOS: \(node.position.y)")
-        print("XPOS: \(node.position.x)")
     }
     
     func createMoveableNode(obstacle: ObstacleType, position: CGPoint) {

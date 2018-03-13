@@ -29,11 +29,11 @@ enum ObstacleType : Int {
     func getName() -> String {
         switch self {
         case .grayBox:
-            return "grayBox"
+            return "grayBox01"
         case .redBox:
-            return "redBox"
+            return "redBox02"
         case .blueBox:
-            return "blueBox"
+            return "blueBox03"
         }
     }
 }
