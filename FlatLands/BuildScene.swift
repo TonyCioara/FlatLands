@@ -118,15 +118,15 @@ class BuildScene: SKScene {
     
     func addNodeToDict(node: SKSpriteNode) {
         
-//        Positions of the node
+        //        Positions of the node
         let xPosition = Int(node.position.x)
         let yPosition = Int(node.position.y)
         
-//        The type value of the node
+        //        The type value of the node
         let nodeSuffix = String(describing: node.name!.suffix(6))
         let nodeNumber = Int(String(describing: nodeSuffix.prefix(2)))!
         
-//        Create hashable string from positions
+        //        Create hashable string from positions
         let key: String = createKeyWithPositions(xPosition: xPosition, yPosition: yPosition)
         
         if mapDict[key] != nil {
@@ -135,6 +135,8 @@ class BuildScene: SKScene {
             self.mapDict[key] = nodeNumber
             self.nodeCount += 1
         }
+        
+        print(self.mapDict)
         
     }
     
@@ -155,16 +157,23 @@ class BuildScene: SKScene {
         var newPosX = Int(node.position.x)
         var newPosY = Int(node.position.y)
         
-        if positionDeltaX > snapSize / 2 {
-            newPosX += Int(snapSize - positionDeltaX + 0.1)
+        if positionDeltaX >= snapSize / 2 {
+            newPosX += Int(snapSize - positionDeltaX)
         } else {
-            newPosX -= Int(positionDeltaX + 0.1)
+            newPosX -= Int(positionDeltaX)
         }
         
-        if positionDeltaY > snapSize / 2 {
-            newPosY += Int(snapSize - positionDeltaY + 0.1)
+        if positionDeltaY >= snapSize / 2 {
+            newPosY += Int(snapSize - positionDeltaY)
         } else {
-            newPosY -= Int(positionDeltaY + 0.1)
+            newPosY -= Int(positionDeltaY)
+        }
+        
+        if newPosX % 10 == 9 {
+            newPosX += 1
+        }
+        if newPosY % 10 == 9 {
+            newPosY += 1
         }
         
         node.position.y = CGFloat(newPosY)

@@ -97,18 +97,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func createMapFromArray(array: [[Int]]) {
-        for rowIndex in 0 ... array.count - 1 {
-            for colIndex in 0 ... array[rowIndex].count - 1 {
-                let typeValue = array[rowIndex][colIndex]
-                if typeValue != 0 {
-                    let type = ObstacleType(rawValue: typeValue - 1)
-                    let xCoord = rowIndex * 40
-                    let yCoord = colIndex * 40
-                    addObstacleToScene(type: type!, xCoord: CGFloat(xCoord), yCoord: CGFloat(yCoord))
-                }
-            }
-        }
+    func createMapFromDict(array: [[Int]]) {
+        
     }
     
     func addObstacleToScene(type: ObstacleType, xCoord: CGFloat, yCoord: CGFloat) {

@@ -42,7 +42,7 @@ class GrayBox: SKSpriteNode {
 //    Both characters are immune to it
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
-//        let size = CGSize(width: 80, height: 80)
+        let size = CGSize(width: 80, height: 80)
         let texture = SKTexture(imageNamed: "grayBox")
         super.init(texture: texture, color: UIColor.init(white: 0, alpha: 0), size: size)
         
@@ -51,8 +51,10 @@ class GrayBox: SKSpriteNode {
         self.physicsBody?.linearDamping = 0.5
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.affectedByGravity = false
-        
+
         self.physicsBody!.categoryBitMask    = PhysicsCategory.GrayBox // 00100
+        self.physicsBody!.collisionBitMask   = PhysicsCategory.None // 00000
+        self.physicsBody!.contactTestBitMask = PhysicsCategory.None // 00000
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -65,7 +67,7 @@ class RedBox: SKSpriteNode {
 //    Red character is immune to it
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
-//        let size = CGSize(width: 80, height: 80)
+        let size = CGSize(width: 80, height: 80)
         let texture = SKTexture(imageNamed: "redBox")
         super.init(texture: texture, color: UIColor.init(white: 0, alpha: 0), size: size)
         
@@ -74,8 +76,10 @@ class RedBox: SKSpriteNode {
         self.physicsBody?.linearDamping = 0.5
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.affectedByGravity = false
-        
+
         self.physicsBody!.categoryBitMask    = PhysicsCategory.BlueBox // 01000
+        self.physicsBody!.collisionBitMask   = PhysicsCategory.None // 00000
+        self.physicsBody!.contactTestBitMask = PhysicsCategory.None // 00000
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -87,7 +91,7 @@ class BlueBox: SKSpriteNode {
 //    Blue character is immune to it
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
-//        let size = CGSize(width: 80, height: 80)
+        let size = CGSize(width: 80, height: 80)
         let texture = SKTexture(imageNamed: "blueBox")
         super.init(texture: texture, color: UIColor.init(white: 0, alpha: 0), size: size)
         
@@ -96,8 +100,10 @@ class BlueBox: SKSpriteNode {
         self.physicsBody?.linearDamping = 0.5
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.affectedByGravity = false
-        
+
         self.physicsBody!.categoryBitMask    = PhysicsCategory.RedBox // 10000
+        self.physicsBody!.collisionBitMask   = PhysicsCategory.None // 00000
+        self.physicsBody!.contactTestBitMask = PhysicsCategory.None // 00000
     }
     
     required init?(coder aDecoder: NSCoder) {
